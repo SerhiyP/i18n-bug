@@ -4,13 +4,12 @@
       "@babel/preset-env",
       {
         "targets": {
-          "node": "current",
+          "node": "12",
           "ie": "11"
         },
         "useBuiltIns": "usage",
         "corejs": 3
       }
-    ],
-    "@babel/preset-react"
-  ],
+    ]
+  ]
 }

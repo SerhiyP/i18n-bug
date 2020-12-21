@@ -1,16 +1,12 @@
-/* global context */
-/* eslint-disable prefer-template */
 import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
 import Backend from 'i18next-fs-backend';
-// const Backend = require('i18next-fs-backend');
 
 const { join } = require('path');
 
 const options = {
     lng: 'en',
     fallbackLng: 'en',
-    debug: false,
+    debug: true,
     interpolation: {
         escapeValue: false,
     },
@@ -22,8 +18,6 @@ const options = {
 };
 
 i18n.use(Backend)
-    .use(initReactI18next);
-
-i18n.init(options);
+    .init(options);
 
 export default i18n;

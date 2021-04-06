@@ -1,24 +1,25 @@
 const path = require('path');
+const MergeIntoSingleFilePlugin = require('webpack-merge-and-include-globally');
 
-const outputPath = 'build/server/';
+
+const outputPath = 'build/';
 
 module.exports = (env, argv) => {
-    const isProd = argv.mode === 'production';
-
     return {
-        entry: './server/i18n.js',
-        target: 'node',
+        entry: './index.js',
         output: {
             path: path.resolve(outputPath),
             filename: '[name].js',
         },
-        module: {
-            rules: [
-                {
-                    test: /\.js$/,
-                    use: 'babel-loader',
-                },
-            ],
-        },
+        plugins: [
+            new MergeIntoSingleFilePlugin({
+                files: {
+                    "app.js": [
+                        './jquery-1.12.4.js',
+                        './jquery.validate.js'
+                    ],
+                }
+            }),
+        ]
     };
 };
